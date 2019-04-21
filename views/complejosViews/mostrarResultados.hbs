@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="card">
+
+            <div class="card-body">
+                <form action="/"  name="panel">
+
+                    <div class="form-group">
+                        Binomica: (<input style="text-align: right" size="4" type="text" id="real" name="real" />
+
+                        <input style="text-align: right" size="4" type="text" id="imag" name="imag" /> )
+
+                       </div>
+                        <div class="form-group">
+                        Polar: [<input style="text-align: right" size="4" type="text" id="modulo" name="modulo"/>
+                           
+                        <input style="text-align: right" size="4" type="text" id="angle" name="angle"/> &Pi; ]
+
+                        (<input style="text-align: right" size="4" type="text" id="radian" name="radian" readonly="readonly"/>°)
+
+                        </div>
+
+                        <div>
+                            <button type="submit" class="btn btn-success btn-block">atras</button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<script>
+    document.panel.real.value = {{ resultado.real }}
+    document.panel.imag.value = {{ resultado.imaginario }}
+    document.panel.modulo.value = {{ resultado.mod }}
+    document.panel.angle.value = {{ resultado.angle }}
+    document.panel.radian.value = {{ resultado.angle }}*180
+
+</script>

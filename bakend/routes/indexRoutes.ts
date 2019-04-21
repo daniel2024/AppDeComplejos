@@ -1,7 +1,8 @@
 import { Response, Request, Router } from 'express';
-
+import IndexRoutesComplejos from '../complejo/routes'
 
 import { json } from 'body-parser';
+
 
 
 
@@ -20,11 +21,13 @@ class IndexRoutes {
  // defini cion de funciones o importar metodos ya hechos 
 
   routes() {
-    // aca definir las rutas 
+
+
+   this.router.use(IndexRoutesComplejos)
   
 
   }
- 
+
 
 }
 
