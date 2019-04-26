@@ -26,7 +26,7 @@ class Complejo{
         
 
     
-      async polarToRectangular(mod:number,arg:number){
+    async polarToRectangular(mod:number,arg:number){
         
             let real = await this.re(mod,arg);
             let imaginario= await this.im(mod,arg);

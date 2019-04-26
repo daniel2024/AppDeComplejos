@@ -8,15 +8,17 @@
                 
 
 
-                <form action="/tranformar" method="POST">
-
-
-                <select name="tranformacion" id="tranformacion" class="btn btn-success btn-block"  >
-                    <option value="polar">Polar</option>
-                    <option value="binomica">Binomica</option>
-                </select>
+                <form name="form" action="/tranformar" method="POST">
 
                     <div class="form-group">
+                        <select name="tranformacion" id="tranformacion" class="btn btn-success btn-block" onchange="displayOnOff()"  >
+                            <option value="polar">Binomica a Polar</option>
+                            <option value="binomica">Polar a Binomica</option>
+                        </select>
+                    </div>
+                
+
+                    <div id="div_binomica" class="form-group">
                         Binomica: (<input style="text-align: right" size="4" type="text" id="real" name="real" />
 
                         <input style="text-align: right" size="4" type="text" id="imag" name="imag" /> )
@@ -25,19 +27,17 @@
 
 
                     </div>
-                    <div class="form-group">
+                    <div id="div_polar" class="form-group" >
                         Polar: [<input style="text-align: right" size="4" type="text" id="mod" name="mod" />
 
                         <input style="text-align: right" size="4" type="text" id="angle" name="angle" /> ]
-
+                    </div>
                         <div>
                             <button type="submit" class="btn btn-success btn-block">
-                                tranformar
+                                Tranformar
                             </button>
 
                         </div>
-
-                    </div>
 
                 </form>
 
@@ -51,3 +51,17 @@
 
 
 </div>
+
+<script>
+function displayOnOff(){
+    if(document.form.tranformacion.value == 'polar'){
+        document.getElementById('div_polar').classList.add('d-none');
+        document.getElementById('div_binomica').classList.remove('d-none');
+    }else{
+        document.getElementById('div_binomica').classList.add('d-none');
+        document.getElementById('div_polar').classList.remove('d-none');
+    }
+}
+
+displayOnOff();
+</script>
