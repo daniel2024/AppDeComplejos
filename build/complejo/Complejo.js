@@ -40,7 +40,6 @@ class Complejo {
     ;
     argumento(re, im) {
         return (mathjs_1.default.atan2(im, re) < 0 ? mathjs_1.default.atan2(im, re) + 2 * mathjs_1.default.pi : mathjs_1.default.atan2(im, re)) / mathjs_1.default.pi;
-        ;
     }
     ;
     re(mod, arg) {
@@ -52,5 +51,40 @@ class Complejo {
         return mod * parseFloat(mathjs_1.default.sin(arg * mathjs_1.default.pi).toFixed(10));
     }
     ;
+    //-----------operaciones de Complejos-----------------
+    //suma de dos números complejos
+    suma(z1, z2) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let x = Number(z1.real) + Number(z2.real);
+            let y = Number(z1.imaginario) + Number(z2.imaginario);
+            return yield this.rectangularToPolar(x, y);
+        });
+    }
+    //resta de dos números complejos
+    resta(z1, z2) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let x = Number(z1.real) - Number(z2.real);
+            let y = Number(z1.imaginario) - Number(z2.imaginario);
+            return yield this.rectangularToPolar(x, y);
+        });
+    }
+    //producto de dos números complejos
+    producto(z1, z2) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let x = Number(z1.real) * Number(z2.real) - Number(z1.imaginario) * Number(z2.imaginario);
+            let y = Number(z1.real) * Number(z2.imaginario) + Number(z2.real) * Number(z1.imaginario);
+            return yield this.rectangularToPolar(x, y);
+        });
+    }
+    //cociente de dos números complejos
+    //excepción cuando el complejo denominador es cero
+    cociente(z1, z2) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let denominador = Number(z2.real) * Number(z2.real) + Number(z2.imaginario) * Number(z2.imaginario);
+            let x = (Number(z1.real) * Number(z2.real) + (Number(z1.imaginario) * (z2.imaginario))) / denominador;
+            let y = (z1.imaginario * Number(z2.real) + Number(z1.real) * (-z2.imaginario)) / denominador;
+            return yield this.rectangularToPolar(x, y);
+        });
+    }
 }
 exports.default = new Complejo(0, 0, 0, 0);
