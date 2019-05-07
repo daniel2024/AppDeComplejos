@@ -1,83 +1,86 @@
 
 
 <div class="row">
-    <div class="col-md-4 offset-md-4">
+    <div class="col-md-6 offset-md-3">
         <div class="card">
 
             <div class="card-body">
-                
-
+  <center><h3>Operaciones basicas</h3></center>              
+<br>
 
                 <form name="form" action="/operaciones/realizar" method="POST">
 
     <div name="complejo" id="Z1">
-                    <div class="form-group">
-                        <select name="tranformacion" id="tranformacion" class="btn btn-success btn-block" onchange="displayOnOff()"  >
-                            <option value="polar">Binomica</option>
-                            <option value="binomica">Polar</option>
+         <div class="row">
+                 <label class="col-md-4">Ingresar Complejo Z1 en:</label>
+                    
+                        <select name="forma_z1" id="forma_z1" class="form-control col-md-3" onchange="displayOnOff_z1()"  >
+                            <option value="polar">Forma Binomica</option>
+                            <option value="binomica">Forma Polar</option>
                         </select>
-                    </div>
+                    
                 
+                    <div id="div_binomica_z1" class="col-md-5">
+                        (Re: <input style="text-align: right" size="4" type="text" id="real_z1" name="real_z1" />
 
-                    <div id="div_binomica" class="form-group">
-                        Binomica: (<input style="text-align: right" size="4" type="text" id="real" name="real" />
-
-                        <input style="text-align: right" size="4" type="text" id="imaginario" name="imaginario" /> )
-
-
-
-
+                        Im: <input style="text-align: right" size="4" type="text" id="imaginario_z1" name="imaginario_z1" /> )
                     </div>
-                    <div id="div_polar" class="form-group" >
-                        Polar: [<input style="text-align: right" size="4" type="text" id="mod" name="mod" />
+                    <div id="div_polar_z1" class="col-md-5" >
+                        [Mod: <input style="text-align: right" size="4" type="text" id="mod_z1" name="mod_z1" />
 
-                        <input style="text-align: right" size="4" type="text" id="angle" name="angle" /> ]
+                        Arg: <input style="text-align: right" size="4" type="text" id="angle_z1" name="angle_z1" /> ]
                     </div>
+        </div>
 
     </div>
+    <br>
+
      <div name="complejo" id="Z2">
-                    <div class="form-group">
-                        <select name="tranformacion" id="tranformacion" class="btn btn-success btn-block" onchange="displayOnOff()"  >
-                            <option value="polar">Binomica</option>
-                            <option value="binomica">Polar</option>
+         <div class="row">
+                 <label class="col-md-4">Ingresar Complejo Z2 en:</label>
+                    
+                        <select name="forma_z2" id="forma_z2" class="form-control col-md-3" onchange="displayOnOff_z2()"  >
+                            <option value="polar">Forma Binomica</option>
+                            <option value="binomica">Forma Polar</option>
                         </select>
-                    </div>
+                    
                 
+                    <div id="div_binomica_z2" class="col-md-5">
+                        (Re: <input style="text-align: right" size="4" type="text" id="real_z2" name="real_z2" />
 
-                    <div id="div_binomica" class="form-group">
-                        Binomica: (<input style="text-align: right" size="4" type="text" id="real" name="real" />
-
-                        <input style="text-align: right" size="4" type="text" id="imaginario" name="imaginario" /> )
-
-
-
-
+                        Im: <input style="text-align: right" size="4" type="text" id="imaginario_z2" name="imaginario_z2" /> )
                     </div>
-                    <div id="div_polar" class="form-group" >
-                        Polar: [<input style="text-align: right" size="4" type="text" id="mod" name="mod" />
+                    <div id="div_polar_z2" class="col-md-5" >
+                        [Mod: <input style="text-align: right" size="4" type="text" id="mod_z2" name="mod_z2" />
 
-                        <input style="text-align: right" size="4" type="text" id="angle" name="angle" /> ]
+                        Arg: <input style="text-align: right" size="4" type="text" id="angle_z2" name="angle_z2" /> ]
                     </div>
+        </div>
+<br>
 
     </div>
 
 
-                        <div>
-                            Z1
-                            <div class="form-group">
-                        <select name="operacion" id="operacion"    >
-                            <option value="suma">+</option>
-                            <option value="resta">-</option>
-                             <option value="producto">*</option>
-                            <option value="cociente">/</option>
-                        </select>
-                    </div>
-                    Z2
-                            <button type="submit" class="btn btn-success btn-block">
-                                Tranformar
-                            </button>
-
+                    <div>
+                        <div class="row">
+                            <label style="text-align:right" class="col-md-5">Complejo Z1</label>
+                            
+                            <select name="operacion" id="operacion" class=" form-control col-md-2" >
+                                <option value="suma" > + </option>
+                                <option value="resta"> - </option>
+                                <option value="producto"> * </option>
+                                <option value="cociente"> / </option>
+                            </select>
+                            <label class="col-md-5">Complejo Z2</label>
                         </div>
+                        <br>
+                    </div>
+                        <center>
+                            <button type="submit" class="btn btn-success btn-block col-md-6">
+                                Realizar Operación
+                            </button>
+                        </center>
+                    </div>
 
                 </form>
 
@@ -93,15 +96,26 @@
 </div>
 
 <script>
-function displayOnOff(){
-    if(document.form.tranformacion.value == 'polar'){
-        document.getElementById('div_polar').classList.add('d-none');
-        document.getElementById('div_binomica').classList.remove('d-none');
+function displayOnOff_z1(){
+    if(document.form.forma_z1.value == 'polar'){
+        document.getElementById('div_polar_z1').classList.add('d-none');
+        document.getElementById('div_binomica_z1').classList.remove('d-none');
     }else{
-        document.getElementById('div_binomica').classList.add('d-none');
-        document.getElementById('div_polar').classList.remove('d-none');
+        document.getElementById('div_binomica_z1').classList.add('d-none');
+        document.getElementById('div_polar_z1').classList.remove('d-none');
     }
 }
 
-displayOnOff();
+function displayOnOff_z2(){
+    if(document.form.forma_z2.value == 'polar'){
+        document.getElementById('div_polar_z2').classList.add('d-none');
+        document.getElementById('div_binomica_z2').classList.remove('d-none');
+    }else{
+        document.getElementById('div_binomica_z2').classList.add('d-none');
+        document.getElementById('div_polar_z2').classList.remove('d-none');
+    }
+}
+
+displayOnOff_z2();
+displayOnOff_z1();
 </script>
