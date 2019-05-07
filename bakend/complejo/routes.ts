@@ -63,9 +63,10 @@ class IndexRoutesComplejos {
       let resultado
 
       
-
+let z1
+let z2
     
-
+/*
       switch (operacion) {
         case 'suma': resultado = await Complejo.suma(z1, z2);
           break;
@@ -80,7 +81,7 @@ class IndexRoutesComplejos {
           break;
 
         default: break
-      }
+      }*/
 
 
 
@@ -89,7 +90,7 @@ class IndexRoutesComplejos {
 
      resultado = await Complejo.rectangularToPolar(1,2)
 
-      return response.render('complejosViews/mostrarResultados',{resultado})
+      return response.render('complejosViews/mostrarResultadosOperacionesBasicas',{resultado})
 
     } catch (error) {
 

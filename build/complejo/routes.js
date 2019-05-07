@@ -36,23 +36,26 @@ class IndexRoutesComplejos {
                 console.log(reques.body);
                 let { element, operacion } = reques.body;
                 let resultado;
-                switch (operacion) {
-                    case 'suma':
-                        resultado = yield Complejo_1.default.suma(z1, z2);
-                        break;
-                    case 'resta':
-                        resultado = yield Complejo_1.default.resta(z1, z2);
-                        break;
-                    case 'producto':
-                        resultado = yield Complejo_1.default.producto(z1, z2);
-                        break;
-                    case 'cociente':
-                        resultado = yield Complejo_1.default.cociente(z1, z2);
-                        break;
-                    default: break;
-                }
+                let z1;
+                let z2;
+                /*
+                      switch (operacion) {
+                        case 'suma': resultado = await Complejo.suma(z1, z2);
+                          break;
+                
+                        case 'resta': resultado = await Complejo.resta(z1, z2);
+                          break;
+                
+                        case 'producto': resultado = await Complejo.producto(z1, z2)
+                          break;
+                
+                        case 'cociente': resultado = await Complejo.cociente(z1, z2);
+                          break;
+                
+                        default: break
+                      }*/
                 resultado = yield Complejo_1.default.rectangularToPolar(1, 2);
-                return response.render('complejosViews/mostrarResultados', { resultado });
+                return response.render('complejosViews/mostrarResultadosOperacionesBasicas', { resultado });
             }
             catch (error) {
             }

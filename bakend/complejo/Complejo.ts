@@ -82,7 +82,7 @@ class Complejo{
 
 //cociente de dos números complejos
 //excepción cuando el complejo denominador es cero
-async cociente(z1:Complejo , z2:Complejo ){
+async cociente(z1:any , z2:any ){
     
          let denominador=Number(z2.real)*Number(z2.real)+Number(z2.imaginario)*Number(z2.imaginario);
          let x=(Number(z1.real)*Number(z2.real)+(Number(z1.imaginario)*(z2.imaginario)))/denominador;
