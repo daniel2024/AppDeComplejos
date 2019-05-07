@@ -15,8 +15,8 @@
 <br>
 </nav>
 
-<div class="row"><br></div>
-<div class="row"><br></div>
+<div class="row">&nbsp;</div>
+<div class="row">&nbsp;</div>
 
 <div class="row">
     <div class="col-md-6 offset-md-3">
@@ -46,7 +46,7 @@
                     <div id="div_polar_z1" class="col-md-5" >
                         [Mod: <input style="text-align: right" size="4" type="text" id="mod_z1" name="modZ1" />
 
-                        Arg: <input style="text-align: right" size="4" type="text" id="angle_z1" name="angleZ1" /> &Pi; ]
+                        Arg: <input style="text-align: right" size="4" type="text" id="angle_z1" name="angleZ1" /> &Pi;]
                     </div>
         </div>
 
@@ -64,14 +64,14 @@
                     
                 
                     <div id="div_binomica_z2" class="col-md-5">
-                        (Re: <input style="text-align: right" size="4" type="text" id="real_z2" name="realZ2" />
+                        (Re: <input style="text-align: right" size="4" type="text" id="real_z2" name="realZ2" onchange="div_por_cero()" />
 
-                        Im: <input style="text-align: right" size="4" type="text" id="imaginario_z2" name="imaginarioZ2" /> )
+                        Im: <input style="text-align: right" size="4" type="text" id="imaginario_z2" name="imaginarioZ2" onchange="div_por_cero()"/> )
                     </div>
                     <div id="div_polar_z2" class="col-md-5" >
-                        [Mod: <input style="text-align: right" size="4" type="text" id="mod_z2" name="modZ2" />
+                        [Mod: <input style="text-align: right" size="4" type="text" id="mod_z2" name="modZ2" onchange="div_por_cero()" />
 
-                        Arg: <input style="text-align: right" size="4" type="text" id="angle_z2" name="angleZ2" /> &Pi; ]
+                        Arg: <input style="text-align: right" size="4" type="text" id="angle_z2" name="angleZ2" /> &Pi;]
                     </div>
         </div>
 <br>
@@ -83,7 +83,7 @@
                         <div class="row">
                             <label style="text-align:right" class="col-md-5">Complejo Z1</label>
                             
-                            <select name="operacion" id="operacion" class=" form-control col-md-2" >
+                            <select name="operacion" id="operacion" class=" form-control col-md-2" onchange="div_por_cero()">
                                 <option value="suma" > + </option>
                                 <option value="resta"> - </option>
                                 <option value="producto"> * </option>
@@ -131,6 +131,24 @@ function displayOnOff_z2(){
     }else{
         document.getElementById('div_binomica_z2').classList.add('d-none');
         document.getElementById('div_polar_z2').classList.remove('d-none');
+    }
+}
+
+function div_por_cero(){
+
+    if(document.getElementById('operacion').value == 'cociente'){
+        if(document.form.forma_z2.value == 'binomica'){
+            if(document.getElementById('mod_z2').value === '0'){
+                alert('No puede dividir por cero');
+                document.getElementById('mod_z2').value = null;
+            }
+        }else{
+            if(document.getElementById('real_z2').value === '0' && document.getElementById('imaginario_z2').value === '0'){
+                alert('No puede dividir por cero');
+                document.getElementById('real_z2').value = null;
+                document.getElementById('imaginario_z2').value = null;
+            }
+        }
     }
 }
 
