@@ -23,27 +23,27 @@
   <center><h3>Operaciones basicas</h3></center>              
 <br>
 
-                <form name="form" action="/operaciones/realizar" method="POST">
+                <form name="form" action="/operaciones" method="POST">
 
     <div name="complejo" id="Z1">
          <div class="row">
                  <label class="col-md-4">Ingresar Complejo Z1 en:</label>
                     
-                        <select name="forma_z1" id="forma_z1" class="form-control col-md-3" onchange="displayOnOff_z1()"  >
-                            <option value="polar">Forma Binomica</option>
-                            <option value="binomica">Forma Polar</option>
+                        <select name="formaZ1" id="forma_z1" class="form-control col-md-3" onchange="displayOnOff_z1()"  >
+                            <option value="polar">Forma Polar</option>
+                            <option value="binomica">Forma Binomica</option>
                         </select>
                     
                 
                     <div id="div_binomica_z1" class="col-md-5">
-                        (Re: <input style="text-align: right" size="4" type="text" id="real_z1" name="real_z1" />
+                        (Re: <input style="text-align: right" size="4" type="text" id="real_z1" name="realZ1" />
 
-                        Im: <input style="text-align: right" size="4" type="text" id="imaginario_z1" name="imaginario_z1" /> )
+                        Im: <input style="text-align: right" size="4" type="text" id="imaginario_z1" name="imaginarioZ1" /> )
                     </div>
                     <div id="div_polar_z1" class="col-md-5" >
-                        [Mod: <input style="text-align: right" size="4" type="text" id="mod_z1" name="mod_z1" />
+                        [Mod: <input style="text-align: right" size="4" type="text" id="mod_z1" name="modZ1" />
 
-                        Arg: <input style="text-align: right" size="4" type="text" id="angle_z1" name="angle_z1" /> &Pi; ]
+                        Arg: <input style="text-align: right" size="4" type="text" id="angle_z1" name="angleZ1" /> &Pi; ]
                     </div>
         </div>
 
@@ -54,21 +54,21 @@
          <div class="row">
                  <label class="col-md-4">Ingresar Complejo Z2 en:</label>
                     
-                        <select name="forma_z2" id="forma_z2" class="form-control col-md-3" onchange="displayOnOff_z2()"  >
-                            <option value="polar">Forma Binomica</option>
-                            <option value="binomica">Forma Polar</option>
+                        <select name="formaZ2" id="forma_z2" class="form-control col-md-3" onchange="displayOnOff_z2()"  >
+                            <option value="polar">Forma Polar</option>
+                            <option value="binomica">Forma Binomica</option>
                         </select>
                     
                 
                     <div id="div_binomica_z2" class="col-md-5">
-                        (Re: <input style="text-align: right" size="4" type="text" id="real_z2" name="real_z2" />
+                        (Re: <input style="text-align: right" size="4" type="text" id="real_z2" name="realZ2" />
 
-                        Im: <input style="text-align: right" size="4" type="text" id="imaginario_z2" name="imaginario_z2" /> )
+                        Im: <input style="text-align: right" size="4" type="text" id="imaginario_z2" name="imaginarioZ2" /> )
                     </div>
                     <div id="div_polar_z2" class="col-md-5" >
-                        [Mod: <input style="text-align: right" size="4" type="text" id="mod_z2" name="mod_z2" />
+                        [Mod: <input style="text-align: right" size="4" type="text" id="mod_z2" name="modZ2" />
 
-                        Arg: <input style="text-align: right" size="4" type="text" id="angle_z2" name="angle_z2" /> &Pi; ]
+                        Arg: <input style="text-align: right" size="4" type="text" id="angle_z2" name="angleZ2" /> &Pi; ]
                     </div>
         </div>
 <br>

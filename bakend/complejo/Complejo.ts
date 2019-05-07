@@ -92,6 +92,11 @@ async cociente(z1:Complejo , z2:Complejo ){
     return await this.rectangularToPolar(x,y);
  }
 
+ async filtrarDatos(body:any){
+
+    let z1 = (body.formaZ1 == 'binomica') ? new Complejo(body.realZ1,body.imaginarioZ1,) : await Complejo.polarToRectangular(element[0].mod, element[0].angle)
+    let z2 = (element[1].tipo == 'binomica') ? element[1] : await Complejo.polarToRectangular(element[1].mod, element[1].angle)
+ }
         
 }
 

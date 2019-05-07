@@ -62,8 +62,7 @@ class IndexRoutesComplejos {
 
       let resultado
 
-      let z1 = (element[0].tipo == 'binomica') ? element[0] : await Complejo.polarToRectangular(element[0].mod, element[0].angle)
-      let z2 = (element[1].tipo == 'binomica') ? element[1] : await Complejo.polarToRectangular(element[1].mod, element[1].angle)
+      
 
     
 
@@ -88,9 +87,9 @@ class IndexRoutesComplejos {
 
 
 
+     resultado = await Complejo.rectangularToPolar(1,2)
 
-
-      return response.render('complejosViews/mostrarResultados', { resultado })
+      return response.render('complejosViews/mostrarResultados',{resultado})
 
     } catch (error) {
 

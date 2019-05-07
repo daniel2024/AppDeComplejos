@@ -36,8 +36,6 @@ class IndexRoutesComplejos {
                 console.log(reques.body);
                 let { element, operacion } = reques.body;
                 let resultado;
-                let z1 = (element[0].tipo == 'binomica') ? element[0] : yield Complejo_1.default.polarToRectangular(element[0].mod, element[0].angle);
-                let z2 = (element[1].tipo == 'binomica') ? element[1] : yield Complejo_1.default.polarToRectangular(element[1].mod, element[1].angle);
                 switch (operacion) {
                     case 'suma':
                         resultado = yield Complejo_1.default.suma(z1, z2);
@@ -53,6 +51,7 @@ class IndexRoutesComplejos {
                         break;
                     default: break;
                 }
+                resultado = yield Complejo_1.default.rectangularToPolar(1, 2);
                 return response.render('complejosViews/mostrarResultados', { resultado });
             }
             catch (error) {
