@@ -59,6 +59,7 @@ class Complejo{
    
     let x=Number(z1.real)+Number(z2.real);
     let y=Number(z1.imaginario)+Number(z2.imaginario);
+
     return await this.rectangularToPolar(x,y);
  }
 
@@ -94,9 +95,12 @@ async cociente(z1:any , z2:any ){
 
  async filtrarDatos(body:any){
 
-    let z1 = (body.formaZ1 == 'binomica') ? new Complejo(body.realZ1,body.imaginarioZ1,) : await Complejo.polarToRectangular(element[0].mod, element[0].angle)
-    let z2 = (element[1].tipo == 'binomica') ? element[1] : await Complejo.polarToRectangular(element[1].mod, element[1].angle)
- }
+    let z1 = (body.formaZ1 == 'polar') ? await this.rectangularToPolar(body.realZ1,body.imaginarioZ1) : await this.polarToRectangular(body.modZ1, body.angleZ1)
+    let z2 = (body.formaZ2 == 'polar') ? await this.rectangularToPolar(body.realZ2,body.imaginarioZ2) : await this.polarToRectangular(body.modZ2, body.angleZ2)
+
+
+    return  {z1,z2}
+}
         
 }
 

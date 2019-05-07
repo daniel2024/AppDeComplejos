@@ -57,16 +57,15 @@ class IndexRoutesComplejos {
   public operacionesAritmeticasDeComplejos = async (reques: Request, response: Response) => {
     try {
 
-      console.log(reques.body)
-      let { element, operacion } = reques.body
+      //console.log(reques.body)
+      let { operacion } = reques.body
 
       let resultado
 
       
-let z1
-let z2
+      let {z1,z2}:any =await Complejo.filtrarDatos(reques.body)
     
-/*
+
       switch (operacion) {
         case 'suma': resultado = await Complejo.suma(z1, z2);
           break;
@@ -81,15 +80,11 @@ let z2
           break;
 
         default: break
-      }*/
+      }
 
 
-
-
-
-
-     resultado = await Complejo.rectangularToPolar(1,2)
-
+      console.log(resultado)
+      
       return response.render('complejosViews/mostrarResultadosOperacionesBasicas',{resultado})
 
     } catch (error) {
