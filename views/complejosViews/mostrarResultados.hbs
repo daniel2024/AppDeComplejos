@@ -5,7 +5,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="/">Pasajes <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="/">Transformaciones <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="/operaciones">Operaciones Basicas</a>
       <a class="nav-item nav-link disabled" href="#">Operaciones Complejas</a>
     </div>
@@ -14,25 +14,30 @@
 <br>
 </nav>
 
+<div class="row"><br></div>
+<div class="row"><br></div>
+
 <div class="row">
 
-    <div class="col-md-4 offset-md-4">
+    <div class="col-md-6 offset-md-3">
         <div class="card">
             <div class="card-body">
+                                  <center><h5>Resultado de la Tranformación</h5></center>              
+<br>
                 <form action="/"  name="panel">
 
                     <div class="form-group">
-                        Binomica: (<input style="text-align: right" size="4" type="text" id="real" name="real" />
+                        Binomica: (Re: <input style="text-align: right" size="4" type="text" id="real" name="real" />
 
-                        <input style="text-align: right" size="4" type="text" id="imag" name="imag" /> )
+                        Im: <input style="text-align: right" size="4" type="text" id="imag" name="imag" /> )
 
                        </div>
                         <div class="form-group">
-                        Polar: [<input style="text-align: right" size="4" type="text" id="modulo" name="modulo"/>
+                        Polar: [Mod: <input style="text-align: right" size="4" type="text" id="modulo" name="modulo"/>
                            
-                        <input style="text-align: right" size="4" type="text" id="angle" name="angle"/> &Pi; ]
+                        Arg: <input style="text-align: right" size="4" type="text" id="angle" name="angle"/> &Pi; ]
 
-                        (<input style="text-align: right" size="4" type="text" id="radian" name="radian" readonly="readonly"/>°)
+                        (Arg: <input style="text-align: right" size="4" type="text" id="radian" name="radian" readonly="readonly"/>°)
 
                         </div>
 
