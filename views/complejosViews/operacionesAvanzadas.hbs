@@ -11,15 +11,15 @@
   <center><h3>Operaciones Avanzadas</h3></center>              
 <br>
 
-                <form name="form" action="/operacionesAvanzadas/realizar" method="POST">
+    <form name="form" action="/operacionesAvanzadas/realizar" method="POST">
 
     <div name="complejo" id="Z1">
          <div class="row">
                  <label class="col-md-4">Ingresar Complejo Z1 en:</label>
                     
                         <select name="formaZ1" id="forma_z1" class="form-control col-md-3" onchange="displayOnOff_z1()"  >
-                            <option value="binomica">Forma Polar</option>
-                            <option value="polar">Forma Binomica</option>
+                            <option value="polar">Forma Polar</option>
+                            <option value="binomica">Forma Binomica</option>
                         </select>
                     
                 
@@ -46,7 +46,7 @@
                         <div class="row">
                             <label style="text-align:right" class="col-md-5">Complejo Z1</label>
                             
-                            <select name="operacion" id="operacion" class=" form-control col-md-2" onchange="div_por_cero()">
+                            <select name="operacion" id="operacion" class=" form-control col-md-2">
                                 <option value="potencia" > Potencia </option>
                                 <option value="raiz"> Raiz </option>
                                 
@@ -79,7 +79,7 @@
 
 <script>
 function displayOnOff_z1(){
-    if(document.form.forma_z1.value == 'polar'){
+    if(document.form.forma_z1.value == 'binomica'){
         document.getElementById('div_polar_z1').classList.add('d-none');
         document.getElementById('div_binomica_z1').classList.remove('d-none');
     }else{

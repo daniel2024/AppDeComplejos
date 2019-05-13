@@ -59,7 +59,8 @@ class IndexRoutesComplejos {
             }
         });
         this.operacionesDeComplejosAvanzadas = (reques, response) => __awaiter(this, void 0, void 0, function* () {
-            let { operacion, exponente, z1 } = reques.body;
+            let { operacion, exponente } = reques.body;
+            let { z1 } = yield Complejo_1.default.filtrarDatos(reques.body);
             let resultado;
             if (operacion == 'potencia') {
                 resultado = yield Complejo_1.default.potenciaToReal(z1, exponente);

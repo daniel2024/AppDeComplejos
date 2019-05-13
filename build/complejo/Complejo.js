@@ -88,8 +88,8 @@ class Complejo {
     }
     filtrarDatos(body) {
         return __awaiter(this, void 0, void 0, function* () {
-            let z1 = (body.formaZ1 == 'polar') ? yield this.rectangularToPolar(body.realZ1, body.imaginarioZ1) : yield this.polarToRectangular(body.modZ1, body.angleZ1);
-            let z2 = (body.formaZ2 == 'polar') ? yield this.rectangularToPolar(body.realZ2, body.imaginarioZ2) : yield this.polarToRectangular(body.modZ2, body.angleZ2);
+            let z1 = (body.formaZ1 == 'binomica') ? yield this.rectangularToPolar(body.realZ1, body.imaginarioZ1) : yield this.polarToRectangular(body.modZ1, body.angleZ1);
+            let z2 = (body.formaZ2 == 'binomica') ? yield this.rectangularToPolar(body.realZ2, body.imaginarioZ2) : yield this.polarToRectangular(body.modZ2, body.angleZ2);
             return { z1, z2 };
         });
     }

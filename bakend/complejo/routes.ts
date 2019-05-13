@@ -100,8 +100,10 @@ class IndexRoutesComplejos {
 
   public operacionesDeComplejosAvanzadas = async (reques: Request, response: Response) => {
 
-    let { operacion,exponente ,z1} = reques.body
+    let { operacion,exponente} = reques.body
 
+    let {z1}:any =await Complejo.filtrarDatos(reques.body)
+     
     let resultado
 
     if(operacion=='potencia'){   
