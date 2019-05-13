@@ -93,5 +93,71 @@ class Complejo {
             return { z1, z2 };
         });
     }
+    //Operaciones Avanzadas
+    //Potencia de un complejo elevado a un real
+    potenciaToReal(z1, num) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let mod;
+            let tita;
+            if (z1.tipo == 'binomica') {
+                mod = yield mathjs_1.default.pow(this.modulo(z1.real, z1.imaginario), num);
+                tita = (yield this.argumento(z1.real, z1.imaginario)) * num;
+            }
+            else {
+                mod = yield mathjs_1.default.pow(z1.mod, num);
+                tita = z1.angle * num;
+            }
+            return yield this.polarToRectangular(Number(mod), tita);
+        });
+    }
+    potenciaToComplejo(z1, z2) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let Z1_elevado = this.rectangularToPolar(Number(yield mathjs_1.default.log(yield this.modulo(z1.real, z1.imaginario))), yield this.argumento(z1.real, z1.imaginario));
+            let resultado = yield this.producto(z2, Z1_elevado);
+            return this.polarToRectangular(mathjs_1.default.exp(resultado.real), resultado.imaginario);
+        });
+    }
+    radicacionToReal(z1, num) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let mod = yield mathjs_1.default.pow(this.modulo(z1.real, z1.imaginario), 1 / num);
+            let angulos = [];
+            let fase_inicial = yield this.argumento(z1.real, z1.imaginario);
+            let aux;
+            for (let k = 0; k < num; k++) {
+                if (mod == 1) {
+                    aux = {
+                        w: (fase_inicial + (2 * k * mathjs_1.default.pi)) / num,
+                        primitiva: (yield this.MCD(k, num)) == 1 ? true : false
+                    };
+                }
+                else {
+                    aux = (fase_inicial + (2 * k * mathjs_1.default.pi)) / num;
+                }
+                angulos.push(aux);
+            }
+            return { mod, angulos };
+        });
+    }
+    //funciones axuliares
+    divisores(numero) {
+        let divisores = [];
+        for (let k = 1; k <= numero; k++) {
+            if (numero % k == 0)
+                divisores.push(k);
+        }
+        return divisores;
+    }
+    MCD(c, d) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let divisores = [];
+            let a = yield this.divisores(c);
+            let b = yield this.divisores(d);
+            for (let k = 0; k < b.length; k++) {
+                if (a.indexOf(b[k]) >= 0)
+                    divisores.push(b[k]);
+            }
+            return divisores.pop();
+        });
+    }
 }
 exports.default = new Complejo(0, 0, 0, 0);

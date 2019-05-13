@@ -58,20 +58,37 @@ class IndexRoutesComplejos {
             catch (error) {
             }
         });
+        this.operacionesDeComplejosAvanzadas = (reques, response) => __awaiter(this, void 0, void 0, function* () {
+            let { operacion, exponente, z1 } = reques.body;
+            let resultado;
+            if (operacion == 'potencia') {
+                resultado = yield Complejo_1.default.potenciaToReal(z1, exponente);
+            }
+            else {
+                resultado = yield Complejo_1.default.radicacionToReal(z1, exponente);
+            }
+            console.log(JSON.stringify(resultado, null, 2));
+            response.render('complejosViews/mostrarResultadosOperacionesAvanzadas', { resultado });
+        });
         this.router = express_1.Router();
         this.routes();
     }
     routes() {
         this.router.get('/', this.prevPolar);
         this.router.get('/operaciones', this.prevOperaciones);
+        this.router.get('/operacionesAvanzadas', this.prevOperacionesAvanzadas);
         this.router.post('/tranformar', this.conversionesDeComplejoRecToPolar);
         this.router.post('/operaciones/realizar', this.operacionesAritmeticasDeComplejos);
+        this.router.post('/operacionesAvanzadas/realizar', this.operacionesDeComplejosAvanzadas);
     }
     prevPolar(reques, response) {
         response.render('complejosViews/pasajes');
     }
     prevOperaciones(reques, response) {
         response.render('complejosViews/operaciones');
+    }
+    prevOperacionesAvanzadas(reques, response) {
+        response.render('complejosViews/operacionesAvanzadas');
     }
 }
 const indexRouter = new IndexRoutesComplejos();

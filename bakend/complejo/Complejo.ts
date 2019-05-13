@@ -3,6 +3,7 @@ import Math from 'mathjs'
 
 class Complejo{
  
+ 
       real :number 
       imaginario :number
       mod:number
@@ -101,7 +102,94 @@ async cociente(z1:any , z2:any ){
 
     return  {z1,z2}
 }
+
+//Operaciones Avanzadas
+
+//Potencia de un complejo elevado a un real
+
+    async potenciaToReal(z1: any, num: any) {
+
+        let mod
+        let tita
+        if (z1.tipo == 'binomica') {
+            mod = await Math.pow(this.modulo(z1.real, z1.imaginario), num)
+            tita = await this.argumento(z1.real, z1.imaginario) * num
+        } else {
+            mod = await Math.pow(z1.mod, num)
+            tita = z1.angle * num
+        }
+        return await this.polarToRectangular(Number(mod), tita)
+
+    }
+
+async potenciaToComplejo(z1: any, z2: any)  {
+    
+   let Z1_elevado= this.rectangularToPolar(Number(await Math.log(await this.modulo(z1.real,z1.imaginario))),await this.argumento(z1.real,z1.imaginario))
+   
+
+   let resultado =await this.producto(z2,Z1_elevado) 
+    
+    return this.polarToRectangular(Math.exp(resultado.real),resultado.imaginario)
+  }
+
+  async radicacionToReal(z1:any ,num:any){
+
+    let mod=await Math.pow(this.modulo(z1.real,z1.imaginario),1/num)
+    let angulos=[]
+    let fase_inicial=await this.argumento(z1.real,z1.imaginario)
+
+    let aux
+   
+    for(let k=0;k<num;k++){
+
+
+        if(mod==1){
+         aux={
+           w : (fase_inicial+(2*k*Math.pi))/num,
+           primitiva:await this.MCD(k,num)==1? true:false  
+        }
+
         
-}
+    }else{
+
+        aux=(fase_inicial+(2*k*Math.pi))/num
+    }
+        angulos.push(aux)
+
+    }
+
+  
+return {mod,angulos}
+
+  }
+
+  //funciones axuliares
+
+    divisores(numero: any) {
+        let divisores = []
+
+        for (let k = 1; k <= numero; k++) {
+
+            if (numero % k == 0) divisores.push(k);
+        }
+        
+
+        return divisores
+    }
+   async MCD(c:any, d:any) {
+        let divisores = []
+        let a=await  this.divisores(c)
+        let b=await  this.divisores(d)
+        for(let k=0;k<b.length;k++){
+
+            if(a.indexOf(b[k])>=0) divisores.push(b[k]);
+        }
+
+        
+        return divisores.pop()
+    }
+
+  }
+ 
 
 export default new Complejo(0,0,0,0);

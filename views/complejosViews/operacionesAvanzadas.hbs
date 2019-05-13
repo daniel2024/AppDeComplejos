@@ -1,0 +1,95 @@
+
+
+<div class="row">&nbsp;</div>
+<div class="row">&nbsp;</div>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card">
+
+            <div class="card-body">
+  <center><h3>Operaciones Avanzadas</h3></center>              
+<br>
+
+                <form name="form" action="/operacionesAvanzadas/realizar" method="POST">
+
+    <div name="complejo" id="Z1">
+         <div class="row">
+                 <label class="col-md-4">Ingresar Complejo Z1 en:</label>
+                    
+                        <select name="formaZ1" id="forma_z1" class="form-control col-md-3" onchange="displayOnOff_z1()"  >
+                            <option value="binomica">Forma Polar</option>
+                            <option value="polar">Forma Binomica</option>
+                        </select>
+                    
+                
+                    <div id="div_binomica_z1" class="col-md-5">
+                        (Re: <input style="text-align: right" size="4" type="text" id="real_z1" name="realZ1" />
+
+                        Im: <input style="text-align: right" size="4" type="text" id="imaginario_z1" name="imaginarioZ1" /> )
+                    </div>
+                    <div id="div_polar_z1" class="col-md-5" >
+                        [Mod: <input style="text-align: right" size="4" type="text" id="mod_z1" name="modZ1" />
+
+                        Arg: <input style="text-align: right" size="4" type="text" id="angle_z1" name="angleZ1" /> &Pi;]
+                    </div>
+        </div>
+
+    </div>
+    <br>
+
+    </div>
+
+  
+
+                    <div>
+                        <div class="row">
+                            <label style="text-align:right" class="col-md-5">Complejo Z1</label>
+                            
+                            <select name="operacion" id="operacion" class=" form-control col-md-2" onchange="div_por_cero()">
+                                <option value="potencia" > Potencia </option>
+                                <option value="raiz"> Raiz </option>
+                                
+
+                               
+                            </select>
+                              exponente  <input style="text-align: right" size="4" type="text" id="exponente" name="exponente"/>
+                        </div>
+                        <br>
+                    </div>
+                        <center>
+                            <button type="submit" class="btn btn-success btn-block col-md-6">
+                                Realizar Operación
+                            </button>
+                        </center>
+                    </div>
+
+                </form>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<script>
+function displayOnOff_z1(){
+    if(document.form.forma_z1.value == 'polar'){
+        document.getElementById('div_polar_z1').classList.add('d-none');
+        document.getElementById('div_binomica_z1').classList.remove('d-none');
+    }else{
+        document.getElementById('div_binomica_z1').classList.add('d-none');
+        document.getElementById('div_polar_z1').classList.remove('d-none');
+    }
+}
+
+
+
+
+displayOnOff_z1();
+</script>

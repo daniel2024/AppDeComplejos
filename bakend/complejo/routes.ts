@@ -19,8 +19,10 @@ class IndexRoutesComplejos {
 
     this.router.get('/', this.prevPolar)
     this.router.get('/operaciones', this.prevOperaciones)
+    this.router.get('/operacionesAvanzadas', this.prevOperacionesAvanzadas)
     this.router.post('/tranformar', this.conversionesDeComplejoRecToPolar)
     this.router.post('/operaciones/realizar', this.operacionesAritmeticasDeComplejos)
+    this.router.post('/operacionesAvanzadas/realizar', this.operacionesDeComplejosAvanzadas)
 
 
 
@@ -32,6 +34,9 @@ class IndexRoutesComplejos {
   }
   public prevOperaciones(reques: Request, response: Response) {
     response.render('complejosViews/operaciones')
+  }
+  public prevOperacionesAvanzadas(reques: Request, response: Response) {
+    response.render('complejosViews/operacionesAvanzadas')
   }
 
   public conversionesDeComplejoRecToPolar = async (reques: Request, response: Response) => {
@@ -93,6 +98,28 @@ class IndexRoutesComplejos {
 
   }
 
+  public operacionesDeComplejosAvanzadas = async (reques: Request, response: Response) => {
+
+    let { operacion,exponente ,z1} = reques.body
+
+    let resultado
+
+    if(operacion=='potencia'){   
+
+      resultado=await Complejo.potenciaToReal(z1,exponente);
+        
+
+    }else{
+
+      resultado =await Complejo.radicacionToReal(z1,exponente)
+    }
+
+    console.log(JSON.stringify(resultado,null,2))
+
+    response.render('complejosViews/mostrarResultadosOperacionesAvanzadas',{resultado})
+  }
+
+  
 }
 
 const indexRouter = new IndexRoutesComplejos();
