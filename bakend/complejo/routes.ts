@@ -105,6 +105,7 @@ class IndexRoutesComplejos {
     let {z1}:any =await Complejo.filtrarDatos(reques.body)
      
     let resultado
+    
 
     if(operacion=='potencia'){   
 
@@ -114,6 +115,7 @@ class IndexRoutesComplejos {
     }else{
 
       resultado =await Complejo.radicacionToReal(z1,exponente)
+      
     }
 
     console.log(JSON.stringify(resultado,null,2))

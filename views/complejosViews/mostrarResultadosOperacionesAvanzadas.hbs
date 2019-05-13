@@ -8,9 +8,9 @@
     <div class="col-md-6 offset-md-3">
         <div class="card">
             <div class="card-body">
-                  <center><h5>Resultado de la Operación basica</h5></center>              
+                  <center><h5>Resultado de la Operación Avanzada</h5></center>              
 <br>
-                <form action="/operaciones"  name="panel" >
+                <form action="/operacionesAvanzadas"  name="panel" >
 
                     <div class="form-group">
                         En Forma Binomica: (Re: <input style="text-align: right" size="5" type="text" id="real" name="real" />
@@ -47,10 +47,15 @@
 </div>
 
 <script>
-    document.panel.real.value = {{ resultado.real }}
-    document.panel.imag.value = {{ resultado.imaginario }}
-    document.panel.modulo.value = {{ resultado.mod }}
-    document.panel.angle.value = {{ resultado.angle }}
-    document.panel.radian.value = {{ resultado.angle }}*180
+
+    document.panel.real.value = {{ valor.real }}
+    document.panel.imag.value = {{ valor.imaginario }}
+    document.panel.modulo.value = {{ valor.mod }}
+    document.panel.angle.value = {{ valor.angle }}
+    document.panel.radian.value = {{ valor.angle }}*180
+
+
+
+
 
 </script>

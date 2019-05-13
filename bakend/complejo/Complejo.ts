@@ -111,6 +111,9 @@ async cociente(z1:any , z2:any ){
 
         let mod
         let tita
+        let resultados=[]
+        let aux_resultado
+
         if (z1.tipo == 'binomica') {
             mod = await Math.pow(this.modulo(z1.real, z1.imaginario), num)
             tita = await this.argumento(z1.real, z1.imaginario) * num
@@ -118,7 +121,10 @@ async cociente(z1:any , z2:any ){
             mod = await Math.pow(z1.mod, num)
             tita = z1.angle * num
         }
-        return await this.polarToRectangular(Number(mod), tita)
+        aux_resultado = {z: await this.polarToRectangular(Number(mod), tita)}
+        resultados.push(aux_resultado)
+
+        return {resultados}
 
     }
 
@@ -137,29 +143,31 @@ async potenciaToComplejo(z1: any, z2: any)  {
     let mod=await Math.pow(this.modulo(z1.real,z1.imaginario),1/num)
     let angulos=[]
     let fase_inicial=await this.argumento(z1.real,z1.imaginario)
-
+    let resultados=[]
+    let aux_resultado
     let aux
    
     for(let k=0;k<num;k++){
 
 
         if(mod==1){
-         aux={
-           w : (fase_inicial+(2*k*Math.pi))/num,
-           primitiva:await this.MCD(k,num)==1? true:false  
+            aux={
+            w : (fase_inicial+(2*k*Math.pi))/num,
+            primitiva:await this.MCD(k,num)==1? true:false  
+            }
+            aux_resultado={z:await this.polarToRectangular(Number(mod), aux.w),
+                primitiva: aux.primitiva}
+        }else{
+
+            aux=(fase_inicial+(2*k*Math.pi))/num
+            aux_resultado = { z: await this.polarToRectangular(Number(mod), aux)}
         }
-
-        
-    }else{
-
-        aux=(fase_inicial+(2*k*Math.pi))/num
-    }
         angulos.push(aux)
-
+        resultados.push(aux_resultado)
     }
 
   
-return {mod,angulos}
+return {resultados}
 
   }
 

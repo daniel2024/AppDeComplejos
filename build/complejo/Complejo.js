@@ -99,6 +99,8 @@ class Complejo {
         return __awaiter(this, void 0, void 0, function* () {
             let mod;
             let tita;
+            let resultados = [];
+            let aux_resultado;
             if (z1.tipo == 'binomica') {
                 mod = yield mathjs_1.default.pow(this.modulo(z1.real, z1.imaginario), num);
                 tita = (yield this.argumento(z1.real, z1.imaginario)) * num;
@@ -107,7 +109,9 @@ class Complejo {
                 mod = yield mathjs_1.default.pow(z1.mod, num);
                 tita = z1.angle * num;
             }
-            return yield this.polarToRectangular(Number(mod), tita);
+            aux_resultado = { z: yield this.polarToRectangular(Number(mod), tita) };
+            resultados.push(aux_resultado);
+            return { resultados };
         });
     }
     potenciaToComplejo(z1, z2) {
@@ -122,6 +126,8 @@ class Complejo {
             let mod = yield mathjs_1.default.pow(this.modulo(z1.real, z1.imaginario), 1 / num);
             let angulos = [];
             let fase_inicial = yield this.argumento(z1.real, z1.imaginario);
+            let resultados = [];
+            let aux_resultado;
             let aux;
             for (let k = 0; k < num; k++) {
                 if (mod == 1) {
@@ -129,13 +135,17 @@ class Complejo {
                         w: (fase_inicial + (2 * k * mathjs_1.default.pi)) / num,
                         primitiva: (yield this.MCD(k, num)) == 1 ? true : false
                     };
+                    aux_resultado = { z: yield this.polarToRectangular(Number(mod), aux.w),
+                        primitiva: aux.primitiva };
                 }
                 else {
                     aux = (fase_inicial + (2 * k * mathjs_1.default.pi)) / num;
+                    aux_resultado = { z: yield this.polarToRectangular(Number(mod), aux) };
                 }
                 angulos.push(aux);
+                resultados.push(aux_resultado);
             }
-            return { mod, angulos };
+            return { resultados };
         });
     }
     //funciones axuliares
