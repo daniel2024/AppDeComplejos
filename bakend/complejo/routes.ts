@@ -118,7 +118,7 @@ class IndexRoutesComplejos {
       
     }
 
-    console.log(JSON.stringify(resultado,null,2))
+    console.log(resultado)
 
     response.render('complejosViews/mostrarResultadosOperacionesAvanzadas',{resultado})
   }

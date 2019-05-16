@@ -68,7 +68,7 @@ class IndexRoutesComplejos {
             else {
                 resultado = yield Complejo_1.default.radicacionToReal(z1, exponente);
             }
-            console.log(JSON.stringify(resultado, null, 2));
+            console.log(resultado);
             response.render('complejosViews/mostrarResultadosOperacionesAvanzadas', { resultado });
         });
         this.router = express_1.Router();

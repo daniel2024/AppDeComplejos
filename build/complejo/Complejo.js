@@ -109,7 +109,8 @@ class Complejo {
                 mod = yield mathjs_1.default.pow(z1.mod, num);
                 tita = z1.angle * num;
             }
-            aux_resultado = { z: yield this.polarToRectangular(Number(mod), tita) };
+            aux_resultado = { z: yield this.polarToRectangular(Number(mod), tita),
+                grado: tita * 180 };
             resultados.push(aux_resultado);
             return { resultados };
         });
@@ -132,15 +133,20 @@ class Complejo {
             for (let k = 0; k < num; k++) {
                 if (mod == 1) {
                     aux = {
-                        w: (fase_inicial + (2 * k * mathjs_1.default.pi)) / num,
+                        w: (fase_inicial + (2 * k)) / num,
                         primitiva: (yield this.MCD(k, num)) == 1 ? true : false
                     };
                     aux_resultado = { z: yield this.polarToRectangular(Number(mod), aux.w),
-                        primitiva: aux.primitiva };
+                        primitiva: (yield this.MCD(k, num)) == 1 ? 'SI' : 'NO',
+                        grado: aux.w * 180,
+                        w: 'W' + k + '' };
                 }
                 else {
-                    aux = (fase_inicial + (2 * k * mathjs_1.default.pi)) / num;
-                    aux_resultado = { z: yield this.polarToRectangular(Number(mod), aux) };
+                    aux = (fase_inicial + (2 * k)) / num;
+                    aux_resultado = { z: yield this.polarToRectangular(Number(mod), aux),
+                        grado: aux * 180,
+                        w: 'W' + k + ''
+                    };
                 }
                 angulos.push(aux);
                 resultados.push(aux_resultado);

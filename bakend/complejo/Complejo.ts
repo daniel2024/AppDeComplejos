@@ -121,7 +121,8 @@ async cociente(z1:any , z2:any ){
             mod = await Math.pow(z1.mod, num)
             tita = z1.angle * num
         }
-        aux_resultado = {z: await this.polarToRectangular(Number(mod), tita)}
+        aux_resultado = {z: await this.polarToRectangular(Number(mod), tita),
+                         grado: tita*180}
         resultados.push(aux_resultado)
 
         return {resultados}
@@ -152,15 +153,20 @@ async potenciaToComplejo(z1: any, z2: any)  {
 
         if(mod==1){
             aux={
-            w : (fase_inicial+(2*k*Math.pi))/num,
+            w : (fase_inicial+(2*k))/num,
             primitiva:await this.MCD(k,num)==1? true:false  
             }
             aux_resultado={z:await this.polarToRectangular(Number(mod), aux.w),
-                primitiva: aux.primitiva}
+                primitiva: await this.MCD(k,num)==1? 'SI':'NO',
+                grado: aux.w*180,
+                w:'W'+k+''}
         }else{
 
-            aux=(fase_inicial+(2*k*Math.pi))/num
-            aux_resultado = { z: await this.polarToRectangular(Number(mod), aux)}
+            aux=(fase_inicial+(2*k))/num
+            aux_resultado = { z: await this.polarToRectangular(Number(mod), aux),
+                grado: aux*180,
+                w:'W'+k+''
+            }
         }
         angulos.push(aux)
         resultados.push(aux_resultado)
