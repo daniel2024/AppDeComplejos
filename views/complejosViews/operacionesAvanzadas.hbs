@@ -18,20 +18,20 @@
                  <label class="col-md-4">Ingresar Complejo Z1 en:</label>
                     
                         <select name="formaZ1" id="forma_z1" class="form-control col-md-3" onchange="displayOnOff_z1()"  >
-                            <option value="polar">Forma Polar</option>
                             <option value="binomica">Forma Binomica</option>
+                            <option value="polar">Forma Polar</option>   
                         </select>
                     
                 
                     <div id="div_binomica_z1" class="col-md-5">
-                        (Re: <input style="text-align: right" size="4" type="text" id="real_z1" name="realZ1" />
+                        (<input style="text-align: right" size="4" type="text" id="real_z1" name="realZ1" placeholder="a" pattern="-?[0-9]+(\.[0-9]+)?"  title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal." />
 
-                        Im: <input style="text-align: right" size="4" type="text" id="imaginario_z1" name="imaginarioZ1" /> )
+                        ,<input style="text-align: right" size="4" type="text" id="imaginario_z1" name="imaginarioZ1" placeholder="b" pattern="-?[0-9]+(\.[0-9]+)?"  title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal." /> )
                     </div>
                     <div id="div_polar_z1" class="col-md-5" >
-                        [Mod: <input style="text-align: right" size="4" type="text" id="mod_z1" name="modZ1" />
+                        [<input style="text-align: right" size="4" type="text" id="mod_z1" name="modZ1" placeholder="mod" pattern="-?[0-9]+(\.[0-9]+)?"  title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal."/>
 
-                        Arg: <input style="text-align: right" size="4" type="text" id="angle_z1" name="angleZ1" /> &Pi;]
+                        ;<input style="text-align: right" size="4" type="text" id="angle_z1" name="angleZ1" placeholder="arg" pattern="-?[0-9]+(\.[0-9]+)?"  title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal."/> &Pi;]
                     </div>
         </div>
 
@@ -87,11 +87,15 @@ function displayOnOff_z1(){
         document.getElementById('div_binomica_z1').classList.remove('d-none');
         document.getElementById('mod_z1').removeAttribute("required",true);
         document.getElementById('angle_z1').removeAttribute("required",true); 
+        document.getElementById('mod_z1').value = null;
+        document.getElementById('angle_z1').value = null;
         
     }else{
         document.getElementById('div_binomica_z1').classList.add('d-none');
         document.getElementById('real_z1').removeAttribute("required",true);
         document.getElementById('imaginario_z1').removeAttribute("required",true); 
+        document.getElementById('real_z1').value = null;
+        document.getElementById('imaginario_z1').value = null;
 
         document.getElementById('div_polar_z1').classList.remove('d-none');
         document.getElementById('mod_z1').setAttribute("required",true);

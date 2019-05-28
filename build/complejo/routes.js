@@ -78,6 +78,7 @@ class IndexRoutesComplejos {
         this.router.get('/', this.prevPolar);
         this.router.get('/operaciones', this.prevOperaciones);
         this.router.get('/operacionesAvanzadas', this.prevOperacionesAvanzadas);
+        this.router.get('/fasores', this.fasores);
         this.router.post('/tranformar', this.conversionesDeComplejoRecToPolar);
         this.router.post('/operaciones/realizar', this.operacionesAritmeticasDeComplejos);
         this.router.post('/operacionesAvanzadas/realizar', this.operacionesDeComplejosAvanzadas);
@@ -90,6 +91,9 @@ class IndexRoutesComplejos {
     }
     prevOperacionesAvanzadas(reques, response) {
         response.render('complejosViews/operacionesAvanzadas');
+    }
+    fasores(reques, response) {
+        response.render('complejosViews/fasores');
     }
 }
 const indexRouter = new IndexRoutesComplejos();

@@ -22,15 +22,15 @@
                 
 
                     <div id="div_binomica" class="form-group">
-                        Binomica: (<input style="text-align: right" size="4" type="text" id="real" name="real" />
+                        Binomica: (<input style="text-align: right" size="4" type="text" id="real" name="real" placeholder="a" pattern="-?[0-9]+(\.[0-9]+)?"  title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal." />
 
-                        <input style="text-align: right" size="4" type="text" id="imag" name="imag" /> )
+                        ,<input style="text-align: right" size="4" type="text" id="imag" name="imag" placeholder="b" pattern="-?[0-9]+(\.[0-9]+)?" title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal." /> )
 
                     </div>
                     <div id="div_polar" class="form-group" >
-                        Polar: [<input style="text-align: right" size="4" type="text" id="mod" name="mod" />
+                        Polar: [<input style="text-align: right" size="4" type="text" id="mod" name="mod" placeholder="mod" pattern="-?[0-9]+(\.[0-9]+)?" title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal." />
 
-                        <input style="text-align: right" size="4" type="text" id="angle" name="angle" /> &Pi;]
+                        ;<input style="text-align: right" size="4" type="text" id="angle" name="angle" placeholder="arg" pattern="-?[0-9]+(\.[0-9]+)?" title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal." /> &Pi;]
                     </div>
                         <div>
                             <button type="submit" class="btn btn-success btn-block">
@@ -57,9 +57,21 @@ function displayOnOff(){
     if(document.form.tranformacion.value == 'polar'){
         document.getElementById('div_polar').classList.add('d-none');
         document.getElementById('div_binomica').classList.remove('d-none');
+        document.getElementById('real').setAttribute("required",true);
+        document.getElementById('imag').setAttribute("required",true);
+        document.getElementById('mod').removeAttribute("required",true);
+        document.getElementById('angle').removeAttribute("required",true);
+        document.getElementById('mod').value = null;
+        document.getElementById('angle').value = null;
     }else{
         document.getElementById('div_binomica').classList.add('d-none');
         document.getElementById('div_polar').classList.remove('d-none');
+        document.getElementById('real').removeAttribute("required",true);
+        document.getElementById('imag').removeAttribute("required",true);
+        document.getElementById('real').value = null;
+        document.getElementById('imag').value = null;
+        document.getElementById('mod').setAttribute("required",true);
+        document.getElementById('angle').setAttribute("required",true);
     }
 }
 

@@ -20,11 +20,10 @@ class IndexRoutesComplejos {
     this.router.get('/', this.prevPolar)
     this.router.get('/operaciones', this.prevOperaciones)
     this.router.get('/operacionesAvanzadas', this.prevOperacionesAvanzadas)
+    this.router.get('/fasores', this.fasores)
     this.router.post('/tranformar', this.conversionesDeComplejoRecToPolar)
     this.router.post('/operaciones/realizar', this.operacionesAritmeticasDeComplejos)
     this.router.post('/operacionesAvanzadas/realizar', this.operacionesDeComplejosAvanzadas)
-
-
 
 
   }
@@ -37,6 +36,9 @@ class IndexRoutesComplejos {
   }
   public prevOperacionesAvanzadas(reques: Request, response: Response) {
     response.render('complejosViews/operacionesAvanzadas')
+  }
+  public fasores(reques: Request, response: Response) {
+    response.render('complejosViews/fasores')
   }
 
   public conversionesDeComplejoRecToPolar = async (reques: Request, response: Response) => {
