@@ -1,6 +1,7 @@
 import { Response, Request, Router } from 'express';
 
 import Complejo from './Complejo'
+import { request } from 'https';
 
 
 class IndexRoutesComplejos {
@@ -20,10 +21,11 @@ class IndexRoutesComplejos {
     this.router.get('/', this.prevPolar)
     this.router.get('/operaciones', this.prevOperaciones)
     this.router.get('/operacionesAvanzadas', this.prevOperacionesAvanzadas)
-    this.router.get('/fasores', this.fasores)
+    this.router.get('/fasores', this.prevFasores)
     this.router.post('/tranformar', this.conversionesDeComplejoRecToPolar)
     this.router.post('/operaciones/realizar', this.operacionesAritmeticasDeComplejos)
     this.router.post('/operacionesAvanzadas/realizar', this.operacionesDeComplejosAvanzadas)
+    this.router.post('/operaciones/sumarfasores', this.operacionesSumaDeFasores)
 
 
   }
@@ -37,7 +39,7 @@ class IndexRoutesComplejos {
   public prevOperacionesAvanzadas(reques: Request, response: Response) {
     response.render('complejosViews/operacionesAvanzadas')
   }
-  public fasores(reques: Request, response: Response) {
+  public prevFasores(reques: Request, response: Response) {
     response.render('complejosViews/fasores')
   }
 
@@ -125,7 +127,30 @@ class IndexRoutesComplejos {
     response.render('complejosViews/mostrarResultadosOperacionesAvanzadas',{resultado})
   }
 
-  
+  public operacionesSumaDeFasores = async (reques: Request, response: Response) => {
+
+    console.log(JSON.stringify(reques.body, null, 2))
+
+    let { z1, z2, tipo, w } = reques.body
+
+    let resultado = await Complejo.sumaDeFasores(await Complejo.funcToFasor(z1), await Complejo.funcToFasor(z2))
+
+
+    response.send({
+      "Amp": resultado.mod,
+      "w": reques.body.z1.w,
+      "faseInicial": resultado.angle,
+      "tipo": "cos"
+    })
+  }
+
+ /* response.render('complejosViews/mostrarResultadosFasores', { {
+      "Amp": resultado.mod,
+      "w": reques.body.z1.w,
+      "faseInicial": resultado.angle,
+      "tipo": "cos"
+     })
+*/
 }
 
 const indexRouter = new IndexRoutesComplejos();

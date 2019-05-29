@@ -109,8 +109,10 @@ class Complejo {
                 mod = yield mathjs_1.default.pow(z1.mod, num);
                 tita = z1.angle * num;
             }
-            aux_resultado = { z: yield this.polarToRectangular(Number(mod), tita),
-                grado: tita * 180 };
+            aux_resultado = {
+                z: yield this.polarToRectangular(Number(mod), tita),
+                grado: tita * 180
+            };
             resultados.push(aux_resultado);
             return { resultados };
         });
@@ -136,14 +138,17 @@ class Complejo {
                         w: (fase_inicial + (2 * k)) / num,
                         primitiva: (yield this.MCD(k, num)) == 1 ? true : false
                     };
-                    aux_resultado = { z: yield this.polarToRectangular(Number(mod), aux.w),
+                    aux_resultado = {
+                        z: yield this.polarToRectangular(Number(mod), aux.w),
                         primitiva: (yield this.MCD(k, num)) == 1 ? 'SI' : 'NO',
                         grado: aux.w * 180,
-                        w: 'W' + k + '' };
+                        w: 'W' + k + ''
+                    };
                 }
                 else {
                     aux = (fase_inicial + (2 * k)) / num;
-                    aux_resultado = { z: yield this.polarToRectangular(Number(mod), aux),
+                    aux_resultado = {
+                        z: yield this.polarToRectangular(Number(mod), aux),
                         grado: aux * 180,
                         w: 'W' + k + ''
                     };
@@ -152,6 +157,28 @@ class Complejo {
                 resultados.push(aux_resultado);
             }
             return { resultados };
+        });
+    }
+    //funciones de fasores
+    funcToFasor(f1) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let resultado;
+            if (f1.tipo == 'sen') {
+                resultado = yield this.polarToRectangular(f1.Amp, f1.faseInicial - (mathjs_1.default.pi / 2));
+            }
+            else {
+                resultado = yield this.polarToRectangular(f1.Amp, f1.faseInicial);
+            }
+            return resultado;
+        });
+    }
+    sumaDeFasores(z1, z2) {
+        return __awaiter(this, void 0, void 0, function* () {
+            // console.log('suma de fasores'+JSON.stringify(z1, null, 2))
+            // console.log('suma de fasores'+JSON.stringify(z2, null, 2))
+            let resultado = yield this.suma(z1, z2);
+            console.log(JSON.stringify(resultado, null, 2));
+            return resultado;
         });
     }
     //funciones axuliares

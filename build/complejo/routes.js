@@ -71,6 +71,17 @@ class IndexRoutesComplejos {
             console.log(resultado);
             response.render('complejosViews/mostrarResultadosOperacionesAvanzadas', { resultado });
         });
+        this.operacionesSumaDeFasores = (reques, response) => __awaiter(this, void 0, void 0, function* () {
+            console.log(JSON.stringify(reques.body, null, 2));
+            let { z1, z2, tipo, w } = reques.body;
+            let resultado = yield Complejo_1.default.sumaDeFasores(yield Complejo_1.default.funcToFasor(z1), yield Complejo_1.default.funcToFasor(z2));
+            response.send({
+                "Amp": resultado.mod,
+                "w": reques.body.z1.w,
+                "faseInicial": resultado.angle,
+                "tipo": "cos"
+            });
+        });
         this.router = express_1.Router();
         this.routes();
     }
@@ -78,10 +89,11 @@ class IndexRoutesComplejos {
         this.router.get('/', this.prevPolar);
         this.router.get('/operaciones', this.prevOperaciones);
         this.router.get('/operacionesAvanzadas', this.prevOperacionesAvanzadas);
-        this.router.get('/fasores', this.fasores);
+        this.router.get('/fasores', this.prevFasores);
         this.router.post('/tranformar', this.conversionesDeComplejoRecToPolar);
         this.router.post('/operaciones/realizar', this.operacionesAritmeticasDeComplejos);
         this.router.post('/operacionesAvanzadas/realizar', this.operacionesDeComplejosAvanzadas);
+        this.router.post('/operaciones/sumarfasores', this.operacionesSumaDeFasores);
     }
     prevPolar(reques, response) {
         response.render('complejosViews/pasajes');
@@ -92,7 +104,7 @@ class IndexRoutesComplejos {
     prevOperacionesAvanzadas(reques, response) {
         response.render('complejosViews/operacionesAvanzadas');
     }
-    fasores(reques, response) {
+    prevFasores(reques, response) {
         response.render('complejosViews/fasores');
     }
 }
