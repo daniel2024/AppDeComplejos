@@ -190,7 +190,7 @@ class Complejo {
 
         if (f1.tipo == 'sen') {
 
-            resultado = await this.polarToRectangular(f1.Amp, f1.faseInicial - (Math.pi / 2))
+            resultado = await this.polarToRectangular(f1.Amp, f1.faseInicial - (1 / 2))
         } else {
             resultado = await this.polarToRectangular(f1.Amp, f1.faseInicial)
         }
@@ -206,7 +206,7 @@ class Complejo {
 
         let resultado = await this.suma(z1 ,z2)
 
-        console.log(JSON.stringify(resultado, null, 2))
+        //console.log(JSON.stringify(resultado, null, 2))
 
         return resultado
     }

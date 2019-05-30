@@ -17,13 +17,13 @@
     <div name="funcion" id="F1">
          <div class="row">
                  <label class="col-md-4">Ingresar Funcion F1:</label>                   
-                        <input style="text-align: right" size="4" type="text" id="real_z1" name="realZ1" placeholder="A" pattern="-?[0-9]+(\.[0-9]+)?"  title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal." />
-                        <select name="formaZ1" id="forma_z1" class="form-control col-md-3" onchange="displayOnOff_z1()"  >
+                        <input class="col-md-1" style="text-align: right" size="4" type="text" id="amp_F1" name="amp_F1" placeholder="A" pattern="-?[0-9]+(\.[0-9]+)?"  title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal." required/>
+                        &nbsp;<select name="tipo_F1" id="tipo_F1" class="form-control col-md-2"   >
                             <option value="cos">Cos</option>
                             <option value="sen">Sen</option> 
                         </select>
-                        (<input style="text-align: right" size="4" type="text" id="imaginario_z1" name="imaginarioZ1" placeholder="wt" pattern="-?[0-9]+(\.[0-9]+)?"  title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal." />
-                         + <input style="text-align: right" size="4" type="text" id="imaginario_z1" name="imaginarioZ1" placeholder="G" pattern="-?[0-9]+(\.[0-9]+)?"  title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal." /> )
+                        <b>&nbsp;(&nbsp;</b><input class="col-md-1" style="text-align: right" size="4" type="text" id="w_F1" name="w_F1" onchange="misma_w(this)" placeholder="w" pattern="-?[0-9]+(\.[0-9]+)?"  title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal." required/><b>&nbsp;t&nbsp;</b> 
+                         <b>&nbsp;+&nbsp;</b> <input class="col-md-1" style="text-align: right" size="4" type="text" id="faseInicial_F1" name="faseInicial_F1" placeholder="&phi;" pattern="-?[0-9]+(\.[0-9]+)?"  title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal." required/>&pi; <b>&nbsp;)&nbsp;</b>
      
         </div>
 
@@ -31,15 +31,15 @@
     <br>
 
     <div name="funcion" id="F2">
-         <div class="row">
-                 <label class="col-md-4">Ingresar Funcion F1:</label>                   
-                        <input style="text-align: right" size="4" type="text" id="real_z1" name="realZ1" placeholder="A" pattern="-?[0-9]+(\.[0-9]+)?"  title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal." />
-                        <select name="formaZ1" id="forma_z1" class="form-control col-md-3" onchange="displayOnOff_z1()"  >
+<div class="row">
+                 <label class="col-md-4">Ingresar Funcion F2:</label>                   
+                        <input class="col-md-1"  style="text-align: right" size="4" type="text" id="amp_F2" name="amp_F2" placeholder="A" pattern="-?[0-9]+(\.[0-9]+)?"  title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal." required/>
+                        &nbsp;<select name="tipo_F2" id="tipo_F2" class="form-control col-md-2"   >
                             <option value="cos">Cos</option>
                             <option value="sen">Sen</option> 
                         </select>
-                        (<input style="text-align: right" size="4" type="text" id="imaginario_z1" name="imaginarioZ1" placeholder="wt" pattern="-?[0-9]+(\.[0-9]+)?"  title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal." />
-                         + <input style="text-align: right" size="4" type="text" id="imaginario_z1" name="imaginarioZ1" placeholder="G" pattern="-?[0-9]+(\.[0-9]+)?"  title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal." /> )
+                        <b>&nbsp;(&nbsp;</b><input class="col-md-1" style="text-align: right" size="4" type="text" id="w_F2" onchange="misma_w(this)" name="w_F2" placeholder="w" pattern="-?[0-9]+(\.[0-9]+)?"  title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal." required/><b>&nbsp;t&nbsp;</b> 
+                         <b>&nbsp;+&nbsp;</b><input class="col-md-1" style="text-align: right" size="4" type="text" id="faseInicial_F2" name="faseInicial_F2" placeholder="&phi;" pattern="-?[0-9]+(\.[0-9]+)?"  title="Ingrese un número entero o decimal. Sin separador de miles y con el (.) como separador decimal." required/>&pi; <b>&nbsp;)&nbsp;</b>
      
         </div>
 
@@ -66,70 +66,12 @@
 </div>
 
 <script>
-function displayOnOff_z1(){
-    if(document.form.forma_z1.value == 'binomica'){
-        document.getElementById('div_polar_z1').classList.add('d-none');
-        document.getElementById('real_z1').setAttribute("required",true);
-        document.getElementById('imaginario_z1').setAttribute("required",true); 
-        
-        document.getElementById('div_binomica_z1').classList.remove('d-none');
-        document.getElementById('mod_z1').removeAttribute("required",true);
-        document.getElementById('angle_z1').removeAttribute("required",true); 
-        document.getElementById('mod_z1').value = null;
-        document.getElementById('angle_z1').value = null;
-    }else{
-        document.getElementById('div_binomica_z1').classList.add('d-none');
-        document.getElementById('real_z1').removeAttribute("required",true);
-        document.getElementById('imaginario_z1').removeAttribute("required",true); 
-        document.getElementById('real_z1').value = null;
-        document.getElementById('imaginario_z1').value = null;
 
-        document.getElementById('div_polar_z1').classList.remove('d-none');
-        document.getElementById('mod_z1').setAttribute("required",true);
-        document.getElementById('angle_z1').setAttribute("required",true);
-    }
-}
-
-function displayOnOff_z2(){
-    if(document.form.forma_z2.value == 'binomica'){
-        document.getElementById('div_polar_z2').classList.add('d-none');
-        document.getElementById('real_z2').setAttribute("required",true);
-        document.getElementById('imaginario_z2').setAttribute("required",true); 
-        
-        document.getElementById('div_binomica_z2').classList.remove('d-none');
-        document.getElementById('mod_z2').removeAttribute("required",true);
-        document.getElementById('angle_z2').removeAttribute("required",true); 
-        document.getElementById('mod_z2').value = null;
-        document.getElementById('angle_z2').value = null;
-
-    }else{
-        document.getElementById('div_binomica_z2').classList.add('d-none');
-        document.getElementById('real_z2').removeAttribute("required",true);
-        document.getElementById('imaginario_z2').removeAttribute("required",true); 
-        document.getElementById('real_z2').value = null;
-        document.getElementById('imaginario_z2').value = null;
-
-        document.getElementById('div_polar_z2').classList.remove('d-none');
-        document.getElementById('mod_z2').setAttribute("required",true);
-        document.getElementById('angle_z2').setAttribute("required",true);
-
-    }
-}
-
-function div_por_cero(){
-
-    if(document.getElementById('operacion').value == 'cociente'){
-        if(document.form.forma_z2.value == 'polar'){
-            if(document.getElementById('mod_z2').value === '0'){
-                alert('No puede dividir por cero');
-                document.getElementById('mod_z2').value = null;
-            }
-        }else{
-            if(document.getElementById('real_z2').value === '0' && document.getElementById('imaginario_z2').value === '0'){
-                alert('No puede dividir por cero');
-                document.getElementById('real_z2').value = null;
-                document.getElementById('imaginario_z2').value = null;
-            }
+function misma_w(obj){
+    if(!!document.getElementById('w_F1').value && !!document.getElementById('w_F2').value ){
+        if(document.getElementById('w_F1').value != document.getElementById('w_F2').value ){
+            alert('Las funciones deben tener la misma frecuencia');
+            obj.value = null;
         }
     }
 }

@@ -164,7 +164,7 @@ class Complejo {
         return __awaiter(this, void 0, void 0, function* () {
             let resultado;
             if (f1.tipo == 'sen') {
-                resultado = yield this.polarToRectangular(f1.Amp, f1.faseInicial - (mathjs_1.default.pi / 2));
+                resultado = yield this.polarToRectangular(f1.Amp, f1.faseInicial - (1 / 2));
             }
             else {
                 resultado = yield this.polarToRectangular(f1.Amp, f1.faseInicial);
@@ -177,7 +177,7 @@ class Complejo {
             // console.log('suma de fasores'+JSON.stringify(z1, null, 2))
             // console.log('suma de fasores'+JSON.stringify(z2, null, 2))
             let resultado = yield this.suma(z1, z2);
-            console.log(JSON.stringify(resultado, null, 2));
+            //console.log(JSON.stringify(resultado, null, 2))
             return resultado;
         });
     }

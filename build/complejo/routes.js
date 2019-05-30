@@ -73,14 +73,41 @@ class IndexRoutesComplejos {
         });
         this.operacionesSumaDeFasores = (reques, response) => __awaiter(this, void 0, void 0, function* () {
             console.log(JSON.stringify(reques.body, null, 2));
-            let { z1, z2, tipo, w } = reques.body;
-            let resultado = yield Complejo_1.default.sumaDeFasores(yield Complejo_1.default.funcToFasor(z1), yield Complejo_1.default.funcToFasor(z2));
-            response.send({
-                "Amp": resultado.mod,
-                "w": reques.body.z1.w,
-                "faseInicial": resultado.angle,
-                "tipo": "cos"
-            });
+            let f1;
+            let f2;
+            let resultados = [];
+            let aux_resultado;
+            f1 = {
+                tipo: reques.body.tipo_F1,
+                w: reques.body.w_F1,
+                Amp: reques.body.amp_F1,
+                faseInicial: reques.body.faseInicial_F1
+            };
+            f2 = {
+                tipo: reques.body.tipo_F2,
+                w: reques.body.w_F2,
+                Amp: reques.body.amp_F2,
+                faseInicial: reques.body.faseInicial_F2
+            };
+            //let { z1, z2, tipo, w } = reques.body
+            let resultado = yield Complejo_1.default.sumaDeFasores(yield Complejo_1.default.funcToFasor(f1), yield Complejo_1.default.funcToFasor(f2));
+            console.log(JSON.stringify(resultado, null, 2));
+            aux_resultado = {
+                amp: resultado.mod,
+                w: f1.w,
+                faseInicial: resultado.angle,
+                tipo: "Cos"
+            };
+            resultados.push(aux_resultado);
+            aux_resultado = {
+                amp: resultado.mod,
+                w: f1.w,
+                faseInicial: resultado.angle + (1 / 2),
+                tipo: "Sen"
+            };
+            resultados.push(aux_resultado);
+            console.log(JSON.stringify(resultados, null, 2));
+            response.render('complejosViews/mostrarResultadosFasores', { resultados });
         });
         this.router = express_1.Router();
         this.routes();
