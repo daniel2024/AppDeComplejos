@@ -1,0 +1,49 @@
+
+
+
+<div class="row">&nbsp;</div>
+<div class="row">&nbsp;</div>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card">
+
+            <div class="card-body">
+<center><h5>Resultado de la Operación Avanzada</h5></center>              
+<br>
+
+    <form name="form" action="/fasores" method="GET">
+  {{#each resultados}}
+    <div name="funcion" id="F1">
+         <div class="row">
+                 <label class="col-md-4">Expresado como {{this.tipo}}():</label>                   
+                        <label for="">{{this.amp}}</label>   &nbsp;
+<label for="">{{this.tipo}}</label>
+                        <b>&nbsp;(&nbsp;</b><label for="">{{this.w}}</label><b>&nbsp;t&nbsp;</b> 
+                         <b>&nbsp;+&nbsp;</b> <label for="">{{this.faseInicial}}</label>&pi; <b>&nbsp;)&nbsp;</b>
+     
+        </div>
+
+    </div>
+    <br>
+    {{/each}}
+    
+                        <center>
+                            <button type="submit" class="btn btn-success btn-block col-md-6">
+                                atras
+                            </button>
+                        </center>
+                    </div>
+
+                </form>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
