@@ -34,6 +34,7 @@ class Server {
         this.app.use(helmet_1.default());
     }
     routes() {
+        this.app.use(express_1.default.static(path_1.default.join(__dirname, '../public')));
         this.app.use('/', indexRoutes_1.default);
     }
     start() {

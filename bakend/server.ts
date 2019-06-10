@@ -2,7 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import exphbs from 'express-handlebars';
-import path from 'path';
+import path, { dirname } from 'path';
 
 import indexRouter from './routes/indexRoutes';
 
@@ -40,7 +40,9 @@ class Server{
    }
   routes(){
 
+    this.app.use(express.static(path.join(__dirname,'../public')))
     this.app.use('/', indexRouter);
+    
 
    
   }
