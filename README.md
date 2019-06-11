@@ -18,4 +18,4 @@ $ npm install
 
 and start coding.
 
-npm run start
+$ npm run start
