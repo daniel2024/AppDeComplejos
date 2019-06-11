@@ -18,4 +18,6 @@ $ npm install
 
 and start coding.
 
+```bash
 $ npm run start
+ ```
