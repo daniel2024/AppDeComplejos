@@ -1,11 +1,26 @@
 # AppDeComplejos
 
-instalacion de dependencias
-yarn install 
+## Usage
 
-instalacionde de dependencias Desarrllo
-yarn install -D
+Just clone the repository:
 
-ejecutar
+```bash
+$ git clone https://github.com/daniel2024/AppDeComplejos.git
+```
+run
 
-yarn start
+```bash
+
+$ npm install 
+$ or
+$ yarn install
+
+```
+
+and start coding.
+
+npm run start
+
+or
+
+yarn run start
